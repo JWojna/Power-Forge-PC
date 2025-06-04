@@ -1,6 +1,5 @@
 'use strict';
 
-const { ValidationError } = require('sequelize');
 const { User } = require('../models');
 const bcrypt = require("bcryptjs");
 
