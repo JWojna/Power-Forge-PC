@@ -40,6 +40,14 @@ function SignupFormModal() {
     });
   };
 
+  const handleDemoSignup = () => {
+    setEmail("auto@test.io");
+    setFirstName("Otto");
+    setLastName("Mann");
+    setPassword("password");
+    setConfirmPassword("password");
+  };
+
   return (
     <>
       <h1>Sign Up</h1>
@@ -95,6 +103,9 @@ function SignupFormModal() {
         </label>
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
         <button type="submit">Sign Up</button>
+        <button type="button" onClick={handleDemoSignup}>
+          Demo Signup Ottofill
+        </button>
       </form>
     </>
   );

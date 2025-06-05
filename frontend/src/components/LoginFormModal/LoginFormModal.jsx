@@ -22,6 +22,11 @@ function LoginFormModal() {
       });
   };
 
+  const handleDemoLogin = () => {
+    setCredential("customer1@demo.io");
+    setPassword("password");
+  };
+
   return (
     <>
       <h1>Log In</h1>
@@ -46,6 +51,9 @@ function LoginFormModal() {
         </label>
         {errors.credential && <p>{errors.credential}</p>}
         <button type="submit">Log In</button>
+        <button type="button" onClick={handleDemoLogin}>
+          Demo User Autofill
+        </button>
       </form>
     </>
   );
