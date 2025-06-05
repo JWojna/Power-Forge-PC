@@ -14,16 +14,49 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Components.init({
-    name: DataTypes.STRING,
-    type: DataTypes.STRING,
-    brand: DataTypes.STRING,
-    specs: DataTypes.JSONB,
-    price: DataTypes.NUMERIC,
-    stockQty: DataTypes.INTEGER,
-    reorderLevel: DataTypes.INTEGER,
-    supplierId: DataTypes.INTEGER,
-    barcode: DataTypes.STRING,
-    location: DataTypes.STRING
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    brand: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    specs: {
+      type: DataTypes.JSONB,
+      allowNull: true,
+      defaultValue: {}
+    },
+    price: {
+      type: DataTypes.DECIMAL(8, 2),
+      allowNull: false
+    },
+    stockQty: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0
+    },
+    reorderLevel: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 1
+    },
+    supplierId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    barcode: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: true
+    }
   }, {
     sequelize,
     modelName: 'Components',

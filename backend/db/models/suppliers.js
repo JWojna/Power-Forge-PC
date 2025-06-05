@@ -14,8 +14,20 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Suppliers.init({
-    name: DataTypes.STRING,
-    contactInfo: DataTypes.JSONB
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    contactInfo: {
+      type: DataTypes.JSONB,
+      allowNull: false,
+      defaultValue: {
+        'salesRep': '',
+        'email': '',
+        'phone': '',
+        'url': ''
+      }
+    }
   }, {
     sequelize,
     modelName: 'Suppliers',

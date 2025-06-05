@@ -14,10 +14,23 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Images.init({
-    imageableId: DataTypes.INTEGER,
-    imageableType: DataTypes.ENUM,
-    imageUrl: DataTypes.STRING,
-    preview: DataTypes.BOOLEAN
+    imageableId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    imageableType: {
+      type: DataTypes.ENUM('build', 'component'),
+      allowNull: false
+    },
+    imageUrl: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    preview: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    }
   }, {
     sequelize,
     modelName: 'Images',

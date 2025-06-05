@@ -14,9 +14,18 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   BuildComponents.init({
-    buildId: DataTypes.INTEGER,
-    componentId: DataTypes.INTEGER,
-    quantity: DataTypes.INTEGER
+    buildId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    componentId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    quantity: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'BuildComponents',

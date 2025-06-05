@@ -14,11 +14,37 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Reviews.init({
-    buildId: DataTypes.INTEGER,
-    userId: DataTypes.INTEGER,
-    title: DataTypes.STRING,
-    body: DataTypes.STRING,
-    rating: DataTypes.INTEGER
+    buildId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [2, 30]
+      }
+    },
+    body: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [5, 250]
+      }
+    },
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 1,
+      validate: {
+        min: 1,
+        max: 5
+      }
+    }
   }, {
     sequelize,
     modelName: 'Reviews',

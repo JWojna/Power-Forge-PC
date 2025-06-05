@@ -14,14 +14,40 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   CustomerOrders.init({
-    buildId: DataTypes.INTEGER,
-    status: DataTypes.ENUM,
-    priority: DataTypes.ENUM,
-    startDate: DataTypes.DATE,
-    dueDate: DataTypes.DATE,
-    completedAt: DataTypes.DATE,
-    userId: DataTypes.INTEGER,
-    notes: DataTypes.STRING
+    buildId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    status: {
+      type: DataTypes.ENUM('pending', 'processing', 'completed', 'cancelled', 'on_hold'),
+      allowNull: false,
+      defaultValue: 'pending'
+    },
+    priority: {
+      type: DataTypes.ENUM('low', 'medium', 'high', 'urgent'),
+      allowNull: false,
+      defaultValue: 'medium'
+    },
+    startDate: {
+      type: DataTypes.DATE,
+      allowNull: true
+    },
+    dueDate: {
+      type: DataTypes.DATE,
+      allowNull: true
+    },
+    completedAt: {
+      type: DataTypes.DATE,
+      allowNull: true
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    notes: {
+      type: DataTypes.STRING,
+      allowNull: true
+    }
   }, {
     sequelize,
     modelName: 'CustomerOrders',

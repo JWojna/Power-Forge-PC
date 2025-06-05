@@ -14,10 +14,27 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Builds.init({
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    basePrice: DataTypes.NUMERIC,
-    isActive: DataTypes.BOOLEAN
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [10, 250]
+      }
+    },
+    basePrice: {
+      type: DataTypes.DECIMAL(8, 2),
+      allowNull: false
+    },
+    isActive: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+    }
   }, {
     sequelize,
     modelName: 'Builds',

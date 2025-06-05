@@ -14,13 +14,35 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   OrderTasks.init({
-    orderId: DataTypes.INTEGER,
-    title: DataTypes.STRING,
-    details: DataTypes.STRING,
-    startTime: DataTypes.DATE,
-    endTime: DataTypes.DATE,
-    status: DataTypes.ENUM,
-    userId: DataTypes.INTEGER
+    orderId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    details: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    startTime: {
+      type: DataTypes.DATE,
+      allowNull: true
+    },
+    endTime: {
+      type: DataTypes.DATE,
+      allowNull: true
+    },
+    status: {
+      type: DataTypes.ENUM('todo','in_progress','done'),
+      allowNull: false,
+      defaultValue: 'todo'
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'OrderTasks',
